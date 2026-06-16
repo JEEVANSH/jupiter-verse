@@ -1,0 +1,118 @@
+<div class="portfolio-page">
+  <!-- Header Section -->
+  <section class="portfolio-hero section-navy">
+    <div class="container portfolio-hero-container animate-fade-in-up">
+      <span class="section-tag text-gradient-gold">Case Studies</span>
+      <h1 class="portfolio-title">Enterprise Engagements</h1>
+      <p class="portfolio-desc">
+        Explore our project portfolio. We develop modern web apps, engineer backend components, and support websites to enable seamless customer journeys.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Showcase Grid -->
+  <section class="section container">
+    <!-- Filter Selector -->
+    <div class="filter-tabs">
+      <button 
+        [class.active]="activeCategory === 'all'" 
+        (click)="filterCategory('all')" 
+        class="tab-btn"
+      >
+        All Projects
+      </button>
+      <button 
+        [class.active]="activeCategory === 'featured'" 
+        (click)="filterCategory('featured')" 
+        class="tab-btn"
+      >
+        Featured
+      </button>
+      <button 
+        [class.active]="activeCategory === 'angular'" 
+        (click)="filterCategory('angular')" 
+        class="tab-btn"
+      >
+        Angular Apps
+      </button>
+      <button 
+        [class.active]="activeCategory === 'springboot'" 
+        (click)="filterCategory('springboot')" 
+        class="tab-btn"
+      >
+        Spring Boot Apps
+      </button>
+    </div>
+
+    <!-- Al Arabi Showcase Hero Banner (If 'all' or 'featured' is active) -->
+    <div class="featured-showcase hover-lift" *ngIf="activeCategory === 'all' || activeCategory === 'featured'">
+      <div class="showcase-content">
+        <span class="showcase-tag">Featured Project</span>
+        <h2>Al Arabi Group UAE</h2>
+        <p class="showcase-desc">
+          Provided high-priority website maintenance, career portal improvements, and ongoing technical support. Our engineers optimized loading speeds, resolved critical layout issues, and built features to streamline candidate flows.
+        </p>
+        
+        <h4 class="showcase-list-title">Core Achievements:</h4>
+        <ul class="showcase-list">
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" class="gold-text"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Full responsive redesign of the corporate careers portal</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" class="gold-text"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>99.9% application uptime through active server maintenance</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" class="gold-text"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Consolidated performance pipelines and optimized SEO parameters</span>
+          </li>
+        </ul>
+
+        <div class="tech-tags">
+          <span class="tech-tag">Angular</span>
+          <span class="tech-tag">Web Security</span>
+          <span class="tech-tag">Career Portal</span>
+          <span class="tech-tag">Technical Support</span>
+          <span class="tech-tag">SLA Maintenance</span>
+        </div>
+      </div>
+
+      <div class="showcase-graphic">
+        <div class="browser-mockup">
+          <div class="mockup-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="mockup-url">careers.alarabigroup.ae</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-logo">Al Arabi</div>
+            <div class="mockup-hero">
+              <h3>Build Your Career</h3>
+              <p>Join our team of specialists</p>
+            </div>
+            <div class="mockup-jobs">
+              <div class="job-row"></div>
+              <div class="job-row"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auxiliary Grid -->
+    <h3 class="grid-section-title" *ngIf="filteredProjects.length > 0">
+      {{ activeCategory === 'all' ? 'All Developments' : (activeCategory === 'featured' ? 'Featured Products' : 'Custom Built Applications') }}
+    </h3>
+    
+    <div class="grid-3 portfolio-grid">
+      <div *ngFor="let project of filteredProjects">
+        <app-project-card [project]="project"></app-project-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Component -->
+  <app-cta-section></app-cta-section>
+</div>

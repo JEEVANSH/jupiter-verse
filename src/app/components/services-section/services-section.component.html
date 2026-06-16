@@ -1,0 +1,25 @@
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Capabilities</span>
+      <h2 class="section-title">Our Talent & Technology Solutions</h2>
+      <p class="section-subtitle">We empower enterprises with the teams and engineering skills needed to deploy high-performing digital projects.</p>
+    </div>
+
+    <div class="grid-3">
+      <div *ngFor="let item of featuredServices">
+        <app-service-card [service]="item"></app-service-card>
+      </div>
+    </div>
+
+    <div class="view-all-wrapper">
+      <a routerLink="/services" class="btn btn-outline-navy">
+        View All Services
+        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

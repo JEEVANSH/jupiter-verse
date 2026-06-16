@@ -1,0 +1,50 @@
+<div class="services-page">
+  <!-- Header Area -->
+  <section class="services-hero section-navy">
+    <div class="container services-hero-container animate-fade-in-up">
+      <span class="section-tag text-gradient-gold">Our Expertise</span>
+      <h1 class="services-title">Talent & Technology Services</h1>
+      <p class="services-desc">
+        JupiterVerse delivers senior resources and full-stack software systems to empower your scale operations, accelerate pipelines, and build high-retention teams.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Grid & Filters -->
+  <section class="section container">
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button 
+        [class.active]="activeCategory === 'all'" 
+        (click)="setCategory('all')"
+        class="tab-btn"
+      >
+        All Services
+      </button>
+      <button 
+        [class.active]="activeCategory === 'talent'" 
+        (click)="setCategory('talent')"
+        class="tab-btn"
+      >
+        Talent Solutions
+      </button>
+      <button 
+        [class.active]="activeCategory === 'technology'" 
+        (click)="setCategory('technology')"
+        class="tab-btn"
+      >
+        Technology Solutions
+      </button>
+    </div>
+
+    <!-- Cards Layout -->
+    <div class="grid-3 services-grid">
+      <div *ngFor="let item of filteredServices" class="service-wrapper">
+        <app-service-card [service]="item"></app-service-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Component -->
+  <app-cta-section></app-cta-section>
+</div>

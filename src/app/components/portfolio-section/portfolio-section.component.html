@@ -1,0 +1,25 @@
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Case Studies</span>
+      <h2 class="section-title">Success Stories In Action</h2>
+      <p class="section-subtitle">Discover how we help enterprises optimize their tech operations, build standalone web platforms, and resolve technical support challenges.</p>
+    </div>
+
+    <div class="grid-3">
+      <div *ngFor="let project of featuredProjects">
+        <app-project-card [project]="project"></app-project-card>
+      </div>
+    </div>
+
+    <div class="view-all-wrapper">
+      <a routerLink="/portfolio" class="btn btn-outline-navy">
+        View All Projects
+        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

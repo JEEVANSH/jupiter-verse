@@ -1,0 +1,118 @@
+<div class="contact-form-container">
+  <!-- Success Notification Banner -->
+  <div *ngIf="submitSuccess" class="success-banner animate-fade-in">
+    <div class="success-icon-ring">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h3>Request Submitted!</h3>
+    <p>{{ successMessage }}</p>
+    <button class="btn btn-accent reset-btn" (click)="resetFormState()">Send Another Message</button>
+  </div>
+
+  <!-- Main Form -->
+  <form *ngIf="!submitSuccess" [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+    <div class="form-grid">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">Full Name <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="name" 
+          formControlName="name" 
+          placeholder="John Doe"
+          [class.error]="isFieldInvalid('name')"
+        />
+        <span class="error-msg" *ngIf="isFieldInvalid('name')">Name is required.</span>
+      </div>
+
+      <!-- Company Field -->
+      <div class="form-group">
+        <label for="companyName">Company Name <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="companyName" 
+          formControlName="companyName" 
+          placeholder="Acme Corp"
+          [class.error]="isFieldInvalid('companyName')"
+        />
+        <span class="error-msg" *ngIf="isFieldInvalid('companyName')">Company Name is required.</span>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Business Email <span class="required">*</span></label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          placeholder="john&#64;company.com"
+          [class.error]="isFieldInvalid('email')"
+        />
+        <span class="error-msg" *ngIf="isFieldInvalid('email')">
+          {{ contactForm.get('email')?.errors?.['required'] ? 'Email is required.' : 'Enter a valid email address.' }}
+        </span>
+      </div>
+
+      <!-- Phone Field -->
+      <div class="form-group">
+        <label for="phone">Phone Number <span class="required">*</span></label>
+        <input 
+          type="tel" 
+          id="phone" 
+          formControlName="phone" 
+          placeholder="+971 50 123 4567"
+          [class.error]="isFieldInvalid('phone')"
+        />
+        <span class="error-msg" *ngIf="isFieldInvalid('phone')">Phone number is required.</span>
+      </div>
+
+      <!-- Service Required Field -->
+      <div class="form-group full-width">
+        <label for="serviceRequired">Service Required <span class="required">*</span></label>
+        <select 
+          id="serviceRequired" 
+          formControlName="serviceRequired"
+          [class.error]="isFieldInvalid('serviceRequired')"
+        >
+          <option value="">-- Select a Service --</option>
+          <optgroup label="Talent Solutions">
+            <option value="recruitment">Recruitment Services</option>
+            <option value="contract">Contract Hiring</option>
+          </optgroup>
+          <optgroup label="Technology Solutions">
+            <option value="web-dev">Website Development</option>
+            <option value="app-dev">Web Application Development</option>
+            <option value="software">Software Development</option>
+            <option value="support">Website Maintenance & Support</option>
+          </optgroup>
+        </select>
+        <span class="error-msg" *ngIf="isFieldInvalid('serviceRequired')">Please select a service option.</span>
+      </div>
+
+      <!-- Message Field -->
+      <div class="form-group full-width">
+        <label for="message">Your Message <span class="required">*</span></label>
+        <textarea 
+          id="message" 
+          formControlName="message" 
+          rows="5" 
+          placeholder="Tell us about your team builder or digital engineering goals..."
+          [class.error]="isFieldInvalid('message')"
+        ></textarea>
+        <span class="error-msg" *ngIf="isFieldInvalid('message')">Message must be at least 10 characters long.</span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary submit-btn" [disabled]="contactForm.invalid || isSubmitting">
+        <span *ngIf="!isSubmitting">Send Consultation Request</span>
+        <span *ngIf="isSubmitting" class="loading-spinner-wrapper">
+          <span class="spinner"></span>
+          Processing...
+        </span>
+      </button>
+    </div>
+  </form>
+</div>

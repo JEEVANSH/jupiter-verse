@@ -1,0 +1,58 @@
+<header class="navbar" [class.scrolled]="isScrolled">
+  <div class="container navbar-container">
+    <!-- Logo -->
+    <!-- <a routerLink="/" class="logo-area">
+      <svg class="logo-icon animate-float" viewBox="0 0 24 24" width="32" height="32">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#D4A017" />
+            <stop offset="100%" stop-color="#f6d365" />
+          </linearGradient>
+        </defs>
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#0B1F4D" stroke-width="2"/>
+        <circle cx="12" cy="12" r="6" fill="url(#logoGrad)"/>
+        <path d="M12 2A10 10 0 0 1 22 12" fill="none" stroke="#D4A017" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">JUPITER<span class="gold-text">VERSE</span></span>
+    </a> -->
+    <a routerLink="/" class="logo-area">
+      <img src="/asset/images/jupiterverse-logo.png" alt="JupiterVerse" class="logo-image" />
+      <span class="logo-text">
+        JUPITER<span class="gold-text">VERSE</span>
+      </span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav class="nav-links-desktop">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/services" routerLinkActive="active">Services</a>
+      <!-- <a routerLink="/portfolio" routerLinkActive="active">Portfolio</a> -->
+      <a routerLink="/about" routerLinkActive="active">About Us</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    </nav>
+
+    <!-- CTA Button -->
+    <div class="nav-cta-desktop">
+      <a routerLink="/contact" class="btn btn-accent btn-sm">Schedule a Consultation</a>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle Menu">
+      <span class="bar" [class.active]="isMobileMenuOpen"></span>
+      <span class="bar" [class.active]="isMobileMenuOpen"></span>
+      <span class="bar" [class.active]="isMobileMenuOpen"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-nav" [class.open]="isMobileMenuOpen">
+    <nav class="mobile-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">Home</a>
+      <a routerLink="/services" routerLinkActive="active" (click)="closeMobileMenu()">Services</a>
+      <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMobileMenu()">Portfolio</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()">About Us</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
+      <a routerLink="/contact" class="btn btn-accent mobile-cta-btn" (click)="closeMobileMenu()">Schedule Consultation</a>
+    </nav>
+  </div>
+</header>

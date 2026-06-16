@@ -1,0 +1,244 @@
+.hero-section {
+  position: relative;
+  background-color: var(--color-primary);
+  padding: 10rem 0 8rem;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--color-text-white);
+}
+
+.hero-bg-decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+}
+
+.blob-1 {
+  top: -10%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background-color: var(--color-accent);
+}
+
+.blob-2 {
+  bottom: -10%;
+  left: 5%;
+  width: 400px;
+  height: 400px;
+  background-color: var(--color-primary-light);
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.brand-tag {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(212, 160, 23, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(212, 160, 23, 0.7);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(212, 160, 23, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(212, 160, 23, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(212, 160, 23, 0);
+  }
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--color-text-white);
+  margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.central-sphere {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--color-accent) 0%, rgba(212, 160, 23, 0.2) 70%, transparent 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 160, 23, 0.3);
+}
+
+.inner-core {
+  width: 100px;
+  height: 100px;
+  background-color: var(--color-primary-dark);
+  border-radius: 50%;
+  border: 3px solid var(--color-accent);
+  box-shadow: var(--shadow-gold);
+}
+
+.tech-card {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius-md);
+  padding: 1.25rem;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 240px;
+  box-shadow: var(--shadow-premium);
+  transition: var(--transition-smooth);
+}
+
+.tech-card:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-5px);
+  border-color: var(--color-accent);
+}
+
+.card-talent {
+  top: 15%;
+  left: -10%;
+}
+
+.card-tech {
+  bottom: 15%;
+  right: -10%;
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.talent-icon {
+  background-color: rgba(212, 160, 23, 0.15);
+  color: var(--color-accent);
+}
+
+.tech-icon {
+  background-color: rgba(24, 51, 117, 0.5);
+  color: #93c5fd;
+}
+
+.tech-card h5 {
+  color: var(--color-text-white);
+  margin-bottom: 0.15rem;
+  font-size: 0.95rem;
+}
+
+.tech-card p {
+  color: var(--color-text-light);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .hero-content {
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    height: 300px;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .card-talent {
+    left: 0;
+  }
+
+  .card-tech {
+    right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.75rem;
+  }
+}
