@@ -13,6 +13,7 @@
   font-size: 3rem;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+  color: #fff;
 }
 
 .services-desc {
@@ -66,5 +67,23 @@
   }
   .tab-btn {
     text-align: center;
+  }
+  .services-hero {
+    padding: 6rem 0 4rem;
+  }
+  .services-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-hero {
+    padding: 5rem 0 3rem;
+  }
+  .services-title {
+    font-size: 1.9rem;
+  }
+  .services-desc {
+    font-size: 1rem;
   }
 }

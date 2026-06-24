@@ -127,3 +127,12 @@
 .service-cta:hover .arrow-icon {
   transform: translateX(4px);
 }
+
+@media (max-width: 480px) {
+  .service-card {
+    padding: 1.75rem 1.5rem;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+}

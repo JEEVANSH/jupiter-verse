@@ -16,10 +16,11 @@
       <span class="logo-text">JUPITER<span class="gold-text">VERSE</span></span>
     </a> -->
     <a routerLink="/" class="logo-area">
-      <img src="/asset/images/jupiterverse-logo.png" alt="JupiterVerse" class="logo-image" />
-      <span class="logo-text">
-        JUPITER<span class="gold-text">VERSE</span>
-      </span>
+      <img src="assets/images/jupiterverse-logo.png" alt="JupiterVerse" class="logo-image" />
+      <div class="logo-text-group">
+        <span class="logo-text">JUPITER<span class="gold-text">VERSE</span></span>
+        <span class="logo-tagline">Infinite Possibilities</span>
+      </div>
     </a>
 
     <!-- Desktop Menu -->
@@ -47,12 +48,14 @@
   <!-- Mobile Menu Dropdown -->
   <div class="mobile-nav" [class.open]="isMobileMenuOpen">
     <nav class="mobile-links">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">Home</a>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        (click)="closeMobileMenu()">Home</a>
       <a routerLink="/services" routerLinkActive="active" (click)="closeMobileMenu()">Services</a>
-      <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMobileMenu()">Portfolio</a>
+      <!-- <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMobileMenu()">Portfolio</a> -->
       <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()">About Us</a>
       <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
-      <a routerLink="/contact" class="btn btn-accent mobile-cta-btn" (click)="closeMobileMenu()">Schedule Consultation</a>
+      <a routerLink="/contact" class="btn btn-accent mobile-cta-btn" (click)="closeMobileMenu()">Schedule
+        Consultation</a>
     </nav>
   </div>
 </header>

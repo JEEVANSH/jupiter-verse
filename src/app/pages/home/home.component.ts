@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HeroComponent } from '../../components/hero/hero.component';
 import { ServicesSectionComponent } from '../../components/services-section/services-section.component';
 import { WhyChooseUsComponent } from '../../components/why-choose-us/why-choose-us.component';
-import { PortfolioSectionComponent } from '../../components/portfolio-section/portfolio-section.component';
 import { CtaSectionComponent } from '../../components/cta-section/cta-section.component';
 
 @Component({
@@ -14,7 +13,6 @@ import { CtaSectionComponent } from '../../components/cta-section/cta-section.co
     HeroComponent,
     ServicesSectionComponent,
     WhyChooseUsComponent,
-    PortfolioSectionComponent,
     CtaSectionComponent
   ],
   templateUrl: './home.component.html',

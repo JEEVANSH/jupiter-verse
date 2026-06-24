@@ -13,6 +13,7 @@
   font-size: 3rem;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+  color: #fff;
 }
 
 .contact-desc {
@@ -122,5 +123,43 @@
 @media (max-width: 992px) {
   .contact-info-panel {
     padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    padding: 6rem 0 4rem;
+  }
+  .contact-title {
+    font-size: 2.25rem;
+  }
+  .panel-title {
+    font-size: 1.85rem;
+  }
+  .channel-link {
+    font-size: 0.9rem;
+    word-break: break-all;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero {
+    padding: 5rem 0 3rem;
+  }
+  .contact-title {
+    font-size: 1.9rem;
+  }
+  .contact-desc {
+    font-size: 1rem;
+  }
+  .panel-title {
+    font-size: 1.5rem;
+  }
+  .channel-card {
+    padding: 1.1rem;
+  }
+  .panel-desc {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
   }
 }

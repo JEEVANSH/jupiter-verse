@@ -213,6 +213,11 @@
     text-align: center;
   }
   
+  .hero-section {
+    padding: 7rem 0 5rem;
+    min-height: auto;
+  }
+
   .hero-content {
     margin: 0 auto;
   }
@@ -239,6 +244,32 @@
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+  }
+  .hero-section {
+    padding: 6rem 0 4rem;
+  }
+  .hero-visual {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.9rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-section {
+    padding: 5.5rem 0 3rem;
   }
 }

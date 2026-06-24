@@ -49,3 +49,12 @@
   color: var(--color-text-light);
   line-height: 1.5;
 }
+
+@media (max-width: 480px) {
+  .process-card {
+    padding: 1.75rem 1.25rem;
+  }
+  .process-num {
+    font-size: 1.85rem;
+  }
+}
