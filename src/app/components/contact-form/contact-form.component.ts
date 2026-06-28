@@ -48,7 +48,7 @@ export class ContactFormComponent implements OnInit {
       const serviceParam = params['service'];
       if (serviceParam) {
         // Map query params to serviceRequired selection
-        if (['recruitment', 'contract', 'web-dev', 'app-dev', 'software', 'support'].includes(serviceParam)) {
+        if (['recruitment', 'web-dev', 'app-dev', 'software', 'support'].includes(serviceParam)) {
           this.contactForm.patchValue({ serviceRequired: serviceParam });
         }
       }

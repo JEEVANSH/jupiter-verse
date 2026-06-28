@@ -111,7 +111,12 @@
     </div>
 
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary submit-btn" [disabled]="contactForm.invalid || isSubmitting">
+      <button
+        type="submit"
+        class="btn btn-primary submit-btn"
+        [disabled]="contactForm.invalid || isSubmitting"
+        [attr.aria-disabled]="contactForm.invalid || isSubmitting"
+      >
         <span *ngIf="!isSubmitting">Send Consultation Request</span>
         <span *ngIf="isSubmitting" class="loading-spinner-wrapper">
           <span class="spinner"></span>
