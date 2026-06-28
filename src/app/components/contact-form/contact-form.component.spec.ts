@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactFormComponent } from './contact-form.component';
 import { ContactService } from '../../core/services/contact.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('ContactFormComponent', () => {
   let component: ContactFormComponent;
@@ -14,7 +16,8 @@ describe('ContactFormComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ContactFormComponent],
       providers: [
-        { provide: ContactService, useValue: mockContactService }
+        { provide: ContactService, useValue: mockContactService },
+        { provide: ActivatedRoute, useValue: { queryParams: of({}) } }
       ]
     }).compileComponents();
 
@@ -48,6 +51,27 @@ describe('ContactFormComponent', () => {
     const messageControl = component.contactForm.get('message');
     messageControl?.setValue('short');
     expect(messageControl?.hasError('minlength')).toBeTruthy();
+  });
+
+  it('should submit successfully through Web3Forms', async () => {
+    component.contactForm.patchValue({
+      name: 'Jane Doe',
+      companyName: 'Acme',
+      email: 'jane@example.com',
+      phone: '+971501234567',
+      serviceRequired: 'web-dev',
+      message: 'Hello from the test suite.'
+    });
+
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ success: true, message: 'Message sent.' })
+    } as Response));
+
+    await component.onSubmit();
+
+    expect(component.submitSuccess).toBeTrue();
+    expect(component.contactForm.get('name')?.value).toBe('');
   });
 
   it('should reset form state', () => {

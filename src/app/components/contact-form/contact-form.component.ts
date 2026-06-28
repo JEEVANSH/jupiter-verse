@@ -15,7 +15,11 @@ export class ContactFormComponent implements OnInit {
   contactForm!: FormGroup;
   isSubmitting = false;
   submitSuccess = false;
+  submitError = false;
   successMessage = '';
+  errorMessage = '';
+  private readonly web3FormsUrl = 'https://api.web3forms.com/submit';
+  private readonly accessKey = '580a8808-464f-477a-9141-35d52f2a87a3';
 
   constructor(
     private fb: FormBuilder,
@@ -56,30 +60,62 @@ export class ContactFormComponent implements OnInit {
     return !!(field && field.invalid && (field.dirty || field.touched));
   }
 
-  onSubmit(): void {
-    if (this.contactForm.valid) {
-      this.isSubmitting = true;
-      this.contactService.submitContactRequest(this.contactForm.value).subscribe({
-        next: (response) => {
-          this.isSubmitting = false;
-          if (response.success) {
-            this.submitSuccess = true;
-            this.successMessage = response.message;
-          }
-        },
-        error: (err) => {
-          this.isSubmitting = false;
-          console.error('Submission failed', err);
-        }
-      });
-    } else {
+  async onSubmit(): Promise<void> {
+    if (this.contactForm.invalid) {
       this.markFormGroupTouched(this.contactForm);
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.submitError = false;
+    this.errorMessage = '';
+
+    const formData = new FormData();
+    formData.append('access_key', this.accessKey);
+    formData.append('name', this.contactForm.value.name);
+    formData.append('companyName', this.contactForm.value.companyName);
+    formData.append('email', this.contactForm.value.email);
+    formData.append('phone', this.contactForm.value.phone);
+    formData.append('serviceRequired', this.contactForm.value.serviceRequired);
+    formData.append('message', this.contactForm.value.message);
+
+    try {
+      const response = await fetch(this.web3FormsUrl, {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data?.success !== false) {
+        this.submitSuccess = true;
+        this.successMessage = data?.message || 'Your message has been sent successfully.';
+        this.contactForm.reset({
+          name: '',
+          companyName: '',
+          email: '',
+          phone: '',
+          serviceRequired: '',
+          message: ''
+        });
+      } else {
+        this.submitError = true;
+        this.errorMessage = data?.message || 'Unable to send your message. Please try again.';
+      }
+    } catch (error) {
+      this.submitError = true;
+      this.errorMessage = 'Something went wrong. Please try again.';
+      console.error('Submission failed', error);
+    } finally {
+      this.isSubmitting = false;
     }
   }
 
   resetFormState(): void {
     this.submitSuccess = false;
+    this.submitError = false;
     this.successMessage = '';
+    this.errorMessage = '';
     this.contactForm.reset({
       name: '',
       companyName: '',

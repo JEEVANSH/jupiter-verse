@@ -11,6 +11,11 @@
     <button class="btn btn-accent reset-btn" (click)="resetFormState()">Send Another Message</button>
   </div>
 
+  <div *ngIf="submitError" class="error-banner animate-fade-in">
+    <h3>Submission Failed</h3>
+    <p>{{ errorMessage }}</p>
+  </div>
+
   <!-- Main Form -->
   <form *ngIf="!submitSuccess" [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
     <div class="form-grid">
